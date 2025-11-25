@@ -1,0 +1,28 @@
+{
+    "graduation_date": "June 2027",
+    "current_degree_major": "M.S., Software Engineering; Specialization in Data Science",
+    "current_degree_gpa": "None",
+    "us_citizenship": "F-1",
+    "programming_languages": "Kotlin, Java, Swift, Dart, C/C++, JavaScript, SQL, Bash, CUDA, Python",
+    "experience_software": "Android Studios, Firebase, MongoDB, MySQL, Docker, OpenShift, GitLab CI/CD, AWS, Git, RedHat OpenShift Kubernetes, Jupyter-lab, Blender, Unity",
+    "tools_frameworks": "Flutter, SwiftUI, StreamChatUI, React, Next.js, Node.js, Django, Flask, Express, GraphQL, LangChain, Apache Kafka, REST APIs, WebSockets, CoreData, Cloud Functions, ARCore, ARKit, Vuforia AR SDK, StreamChat API, Google Maps API, Plotly, Sockets",
+    "leadership": [
+        {
+            "role": "Team Lead",
+            "organization": "Google Flutter Hackathon",
+            "description": "Led a 4-member team to build TWENTY22, a Flutter job-seeking app recognized as Best App across MAHE for innovation and UX."
+        },
+        {
+            "role": "Open Source Contributor",
+            "organization": "GitHub",
+            "description": "Collaborated on networking and distributed systems projects, improving scalability, performance, and CI/CD reliability."
+        },
+        {
+            "role": "Teaching Assistant",
+            "organization": "Data Structures & Algorithms",
+            "description": "Mentored peers in algorithmic problem-solving and code optimization techniques."
+        }
+    ],
+    "job_preference": "Internship",
+    "impact_outcomes": "Improved data quality from ~70% to 95-98% by refactoring document conversion tools. Achieved 92% accuracy at scale with a distributed PDF to Markdown processing system. Cut data loading times by 90% through CDN integration. Built real-time dashboards with <1-minute latency. Boosted concept retention by 75%+ with an AR-based learning app. Winner of the Google Flutter Hackathon. Ranked 6th Nationwide at Leap Hackathon."
+}
