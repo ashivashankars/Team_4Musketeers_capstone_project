@@ -13,7 +13,7 @@ An endâ€‘toâ€‘end pipeline that scrapes internship and newâ€‘grad
 
 | Resource | Link |
 |----------|------|
-| **Slides** | [Add presentation link here] |
+| **Slides** | https://docs.google.com/presentation/d/1R31J4VawXAj1IaToMdOcQRuHf0GGLQK4mkfS4TO7Ydg/edit?slide=id.g9ee3b71cb13163_2#slide=id.g9ee3b71cb13163_2  |
 | **Demo** | [Add Gradio demo link here] |
 | **Report** | [Add report link here] |
 
