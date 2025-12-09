@@ -15,7 +15,7 @@ An endâ€‘toâ€‘end pipeline that scrapes internship and newâ€‘grad
 |----------|------|
 | **Slides** | https://docs.google.com/presentation/d/1R31J4VawXAj1IaToMdOcQRuHf0GGLQK4mkfS4TO7Ydg/edit?slide=id.g9ee3b71cb13163_2#slide=id.g9ee3b71cb13163_2  |
 | **Demo** | [Add Gradio demo link here] |
-| **Report** | https://github.com/ashivashankars/Team_4Musketeers_capstone_project/blob/main/README.md |
+| **Report** | https://docs.google.com/document/d/1Ia_e4hcZ7i86L2grl932NM203teuLx9BBASEVUbTJ7k/edit?tab=t.0 |
 
 ---
 
