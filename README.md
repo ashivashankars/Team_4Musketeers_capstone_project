@@ -13,7 +13,7 @@ An end-to-end pipeline that scrapes internship and new grad job postings from Si
 
 | Resource | Link |
 |----------|------|
-| **Slides** | https://docs.google.com/presentation/d/1R31J4VawXAj1IaToMdOcQRuHf0GGLQK4mkfS4TO7Ydg/edit?usp=sharing |
+| **Slides** | https://docs.google.com/presentation/d/1iO_sY9fKUmo8cy710I2dQOShNAower0FqcJy_uTkcrw/edit?usp=sharing |
 | **Demo** | [Add Gradio demo link here] |
 | **Report** | https://docs.google.com/document/d/1Ia_e4hcZ7i86L2grl932NM203teuLx9BBASEVUbTJ7k/edit?tab=t.0 |
 
