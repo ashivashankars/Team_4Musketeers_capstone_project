@@ -7,7 +7,7 @@ Archana Shivashankar, Zach Xie, Venkata Yashwanth Paladugu , Akshata Madavi
 ---
 # Job Recommendation AI Assistant
 
-An endâ€‘toâ€‘end pipeline that scrapes internship and newâ€‘grad job postings from Simplify's GitHub listings, builds a vector database of jobs, and exposes an interactive AI assistant that reads a candidate's resume (PDF) and recommends matching roles.
+An end-to-end pipeline that scrapes internship and new grad job postings from Simplify's GitHub listings, builds a vector database of jobs, and exposes an interactive AI assistant that reads a candidate's resume (PDF) and recommends matching roles.
 
 ## Project Links
 
@@ -23,9 +23,9 @@ An endâ€‘toâ€‘end pipeline that scrapes internship and newâ€‘grad
 
 This project automates three major steps in the early job search workflow:
 
-- Scrape structured job data (internship and newâ€‘grad) from a Simplify GitHub page using a custom web crawler.
-- Build a semantic jobâ€matching engine using sentence embeddings, engineered numeric/categorical features, and a vector database (ChromaDB).
-- Provide a Gradioâ€‘based AI assistant that:
+- Scrape structured job data (internship and new grad) from a Simplify GitHub page using a custom web crawler.
+- Build a semantic job matching engine using sentence embeddings, engineered numeric/categorical features, and a vector database (ChromaDB).
+- Provide a Gradio based AI assistant that:
   - Extracts a candidate profile from a PDF resume using Gemini.
   - Fills in missing fields via an interactive chat.
   - Returns a ranked list of recommended jobs with links and metadata.
@@ -34,7 +34,7 @@ This project automates three major steps in the early job search workflow:
 
 | Layer              | Description                                                                                  |
 |--------------------|----------------------------------------------------------------------------------------------|
-| Data collection    | Web crawler hits Simplify's GitHub job listings (intern + newâ€‘grad) and writes a CSV.       |
+| Data collection    | Web crawler hits Simplify's GitHub job listings (intern + new grad) and writes a CSV.       |
 | Feature pipeline   | Cleans and transforms job and candidate fields, then builds composite feature vectors.       |
 | Vector database    | Stores job vectors plus rich metadata in a persistent ChromaDB collection.                  |
 | Matching logic     | Filters jobs by eligibility (degree, sponsorship, job type) and ranks by cosine similarity. |
@@ -42,7 +42,7 @@ This project automates three major steps in the early job search workflow:
 
 ## 1. Data Collection (Web Crawler + CSV)
 
-A separate script (run before this notebook) crawls the Simplify jobs GitHub page to extract internship and newâ€‘grad roles and writes them to a CSV file. The resulting CSV is the input to this notebook.
+A separate script (run before this notebook) crawls the Simplify jobs GitHub page to extract internship and new grad roles and writes them to a CSV file. The resulting CSV is the input to this notebook.
 
 **Output CSV schema (per job):**
 
@@ -52,7 +52,7 @@ A separate script (run before this notebook) crawls the Simplify jobs GitHub pag
 - `gives_sponsorship` / `Provide_Sponsorship`: Boolean indicating whether the job provides visa sponsorship.
 - `url`: Direct link to the job posting.
 - `education` / `Diploma`: Minimum degree requirement text.
-- `job_type`: e.g., `Intern`, `Full-Time` (intern/newâ€‘grad classification).
+- `job_type`: e.g., `Intern`, `Full-Time` (intern/new grad classification).
 
 The notebook expects a cleaned job CSV (e.g., `jobs_df_demo.csv`) located in Google Drive under the configured path.
 
@@ -71,7 +71,7 @@ The `JobsRecommendation.ipynb` notebook is responsible for:
 The notebook builds a feature pipeline that combines structured job fields with text embeddings:
 
 - **Degree normalization (`resolve_degree_rank`)**
-  - Maps freeâ€‘form education strings to a numeric rank:
+  - Maps free form education strings to a numeric rank:
     - 0 = no explicit degree / high school
     - 1 = Bachelor
     - 2 = Master
@@ -79,9 +79,9 @@ The notebook builds a feature pipeline that combines structured job fields with 
 
 - **Thermometer encoding for degrees (`ThermometerEncoder`)**
   - Encodes degree rank as a cumulative binary vector, e.g.:
-    - Rank 1 â†’ `[1, 0, 0]`
-    - Rank 2 â†’ `[1, 1, 0]`
-    - Rank 3 â†’ `[1, 1, 1]`
+    - Rank 1 = `[1, 0, 0]`
+    - Rank 2 = `[1, 1, 0]`
+    - Rank 3 = `[1, 1, 1]`
 
 - **FeatureVectorization**
   - Uses a `ColumnTransformer` with:
@@ -95,7 +95,7 @@ The notebook builds a feature pipeline that combines structured job fields with 
 
 - Loads the jobs CSV (e.g., `jobs_df_demo.csv`) into `jobs_df`.
 - Ensures `Job_type` is normalized:
-  - If `Role` contains "intern" (caseâ€‘insensitive), label as `Intern`, else `Full-Time`.
+  - If `Role` contains "intern" (caseinsensitive), label as `Intern`, else `Full-Time`.
 - Computes `degree_rank` from the `Diploma` column using `resolve_degree_rank`.
 - (Optional) Saves back to CSV for reuse.
 
@@ -112,7 +112,7 @@ The notebook builds a feature pipeline that combines structured job fields with 
     - `documents`: text representation (`skill_sets`).
     - `metadatas`: full metadata dict.
     - `ids`: stringified row indices.
-- Reâ€‘fits the `FeatureVectorization` pipeline to support candidate vectorization.
+- Refits the `FeatureVectorization` pipeline to support candidate vectorization.
 
 ### Matching Logic
 
@@ -125,7 +125,7 @@ There are two entry points for matching:
    - Builds filters:
      - Degree filter: jobs with `min_degree_req <= candidate_degree_rank`.
      - Sponsorship filter:
-       - If candidate requires sponsorship â†’ only jobs where `Provide_Sponsorship == True`.
+       - If candidate requires sponsorship only jobs where `Provide_Sponsorship == True`.
        - If not â†’ no restriction.
      - Job type filter: matches candidate's `Job_type` preference (intern/fullâ€‘time).
    - Combines filters into a ChromaDB `where` clause using `$and`.
@@ -138,8 +138,8 @@ There are two entry points for matching:
    - `process_json_to_dataframe` converts a candidate JSON object into a oneâ€‘row DataFrame with columns:
      - `YOE`: numeric years of experience (string "NULL" handled as NaN).
      - `Diploma`: current degree and major.
-     - `Job_type`: job preference (intern / fullâ€‘time / both / NULL).
-     - `Require_Sponsorship`: boolean derived from `"require_sponsorship"` ("Yes" â†’ `True`).
+     - `Job_type`: job preference (intern / full time / both / NULL).
+     - `Require_Sponsorship`: boolean derived from `"require_sponsorship"` ("Yes" `True`).
      - `skill_sets`: merged, deduplicated list of `programming_languages` and `tools_frameworks`.
    - `match_jobs` calls `match_jobs_from_csv` on this DataFrame and returns the markdown table string.
 
@@ -212,7 +212,7 @@ The notebook exposes an interactive UI where candidates upload resumes and chat 
 
 - Python environment (Colab recommended).
 - Google account + Google Drive access.
-- Google Generative AI API key (Gemini) with fileâ€‘upload capability.
+- Google Generative AI API key (Gemini) with file upload capability.
 - Dependencies:
   - `chromadb`
   - `sentence-transformers`
@@ -237,7 +237,7 @@ The notebook exposes an interactive UI where candidates upload resumes and chat 
    - On first run, this will:
      - Vectorize all jobs.
      - Create and populate the Chroma collection.
-   - On subsequent runs, it will load the existing collection and reâ€‘instantiate the `FeatureVectorization` pipeline.
+   - On subsequent runs, it will load the existing collection and re-instantiate the `FeatureVectorization` pipeline.
 
 4. **Configure Gemini API key**
    - When prompted, enter your Google API key in the notebook input (or store it as a Colab secret named `GOOGLE_API_KEY`).
