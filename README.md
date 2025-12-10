@@ -13,7 +13,7 @@ An end-to-end pipeline that scrapes internship and new grad job postings from Si
 
 | Resource | Link |
 |----------|------|
-| **Slides** | https://docs.google.com/presentation/d/1R31J4VawXAj1IaToMdOcQRuHf0GGLQK4mkfS4TO7Ydg/edit?slide=id.g9ee3b71cb13163_2#slide=id.g9ee3b71cb13163_2  |
+| **Slides** | https://docs.google.com/presentation/d/1R31J4VawXAj1IaToMdOcQRuHf0GGLQK4mkfS4TO7Ydg/edit?usp=sharing |
 | **Demo** | [Add Gradio demo link here] |
 | **Report** | https://docs.google.com/document/d/1Ia_e4hcZ7i86L2grl932NM203teuLx9BBASEVUbTJ7k/edit?tab=t.0 |
 
@@ -31,6 +31,8 @@ This project automates three major steps in the early job search workflow:
   - Returns a ranked list of recommended jobs with links and metadata.
 
 ## Architecture
+
+<img width="1327" height="697" alt="Screenshot 2025-12-09 at 4 48 48 PM" src="https://github.com/user-attachments/assets/2c540cac-9db1-4e57-9ac5-ed7ceac604fe" />
 
 | Layer              | Description                                                                                  |
 |--------------------|----------------------------------------------------------------------------------------------|
